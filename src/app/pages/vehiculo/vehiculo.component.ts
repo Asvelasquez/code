@@ -23,7 +23,7 @@ export class VehiculoComponent implements OnInit {
     this.vehiculoService.guardar(vehiculo).subscribe(data =>{
         console.log("Se registro vehiculo");
     });
-+
+
   }
 
 }

@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "lineaIII"
+  "defaultProject": "lineaIII",
+  "cli": {
+    "analytics": false
+  }
 }
