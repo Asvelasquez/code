@@ -15,5 +15,8 @@ export class VehiculoService {
   public guardar(vehiculo: Vehiculo){
       return this.http.post(`${this.url}/guardar`, vehiculo);
   }
+  public listar(size: number, page: number) {
+    return this.http.get<Vehiculo[]>(`${this.url}/pageable?page=0&size=5`);
+  }
 
 }
