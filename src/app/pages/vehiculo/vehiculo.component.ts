@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { Vehiculo } from 'src/app/_model/Vehiculo';
 import { VehiculoService } from 'src/app/_service/vehiculo.service';
 
@@ -11,8 +13,12 @@ import { VehiculoService } from 'src/app/_service/vehiculo.service';
 export class VehiculoComponent implements OnInit {
   displayedColumns: string[] = ['placa', 'modelo','marca','tipoVehiuclo','capacidad'];
   dataSource = new MatTableDataSource<Vehiculo>();
-  constructor(private vehiculoService: VehiculoService) { }
-
+  
+  constructor(private vehiculoService: VehiculoService ,public route: ActivatedRoute) { }
+  cantidad : number;
+  pageIndex : number = 0;
+  pageSize: number = 5;
+  
   ngOnInit(): void {
     /*
     let vehiculo: Vehiculo = new Vehiculo();
@@ -22,13 +28,31 @@ export class VehiculoComponent implements OnInit {
     vehiculo.tipoVehiuclo = "Carga";
     vehiculo.capacidad = "120Kg"; 
     */
+  /*
     this.vehiculoService.listar(0,3).subscribe(data =>{
      this.dataSource = new MatTableDataSource(data);
      console.log(data);
+     
     //this.vehiculoService.guardar(vehiculo).subscribe(data =>{
        // console.log("Se registro vehiculo");
     });
-
+      */
+    this.listarPaginado();
+  
+  }
+  listarPaginado(){
+    this.vehiculoService.listarVehiculo(this.pageIndex, this.pageSize).subscribe(data => {
+      this.dataSource = new MatTableDataSource(data.content);
+      this.cantidad = data.totalElements;
+      
+    });
+  }
+  cambiarPagina(e: any){
+    //indice de pagina
+    this.pageIndex = e.pageIndex;
+    //tamaño de paginado
+    this.pageSize = e.pageSize;
+    this.listarPaginado();
   }
 
 }
