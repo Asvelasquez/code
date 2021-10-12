@@ -29,14 +29,15 @@ export class VehiculoComponent implements OnInit {
     vehiculo.capacidad = "120Kg"; 
     */
   /*
-    this.vehiculoService.listar(0,3).subscribe(data =>{
+    this.vehiculoService.listarVehiculo(this.pageIndex,this.pageSize).subscribe(data =>{
      this.dataSource = new MatTableDataSource(data);
      console.log(data);
      
     //this.vehiculoService.guardar(vehiculo).subscribe(data =>{
        // console.log("Se registro vehiculo");
     });
-      */
+    */
+      
     this.listarPaginado();
   
   }
@@ -47,10 +48,8 @@ export class VehiculoComponent implements OnInit {
       
     });
   }
-  cambiarPagina(e: any){
-    //indice de pagina
+  cambioPagina(e: any){
     this.pageIndex = e.pageIndex;
-    //tamaño de paginado
     this.pageSize = e.pageSize;
     this.listarPaginado();
   }

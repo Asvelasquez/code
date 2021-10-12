@@ -33,6 +33,6 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
-    <mat-paginator class="paginador" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" [length]="cantidad" (page)="cambiarPagina($event)" ></mat-paginator>
+    <mat-paginator  [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" [length]="cantidad" (page)="cambioPagina($event)" ></mat-paginator>
 
 
