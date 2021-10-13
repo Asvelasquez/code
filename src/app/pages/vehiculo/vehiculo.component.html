@@ -34,5 +34,36 @@
 </table>
 
     <mat-paginator  [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 100]" [length]="cantidad" (page)="cambioPagina($event)" ></mat-paginator>
+    <p></p>
+    <mat-label>Ingresar un nuevo vehiculo</mat-label> 
+    <p></p>
+    <mat-form-field hintLabel="Max 6 characters" appearance="fill">
+        <mat-label>Ingresar placa</mat-label>
+        <input matInput #input maxlength="6" placeholder="">
+        <mat-hint align="end">{{input.value?.length || 0}}/6</mat-hint>
+      </mat-form-field>
+      
+      <mat-form-field hintLabel="Max 4 characters" appearance="fill">
+        <mat-label>Ingresar Modelo</mat-label>
+        <input matInput #input maxlength="4" placeholder="">
+        <mat-hint align="end">{{input.value?.length || 0}}/4</mat-hint>
+      </mat-form-field>
 
+      <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+        <mat-label>Ingresar Marca</mat-label>
+        <input matInput #input maxlength="10" placeholder="">
+        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+       
+      </mat-form-field>
+     
+      <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+        <mat-label>Ingresar Tipo de vehiculo</mat-label>
+        <input matInput #input maxlength="10" placeholder="">
+        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+      </mat-form-field>
 
+      <mat-form-field hintLabel="Max 10 characters" appearance="fill">
+        <mat-label>Ingresar Capacidad</mat-label>
+        <input matInput #input maxlength="10" placeholder="">
+        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+      </mat-form-field>
