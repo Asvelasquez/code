@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DepartamentoComponent } from './pages/departamento/departamento.component';
 import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
 import { VehiculoComponent } from './pages/vehiculo/vehiculo.component';
+import { AgregarVehiculoComponent } from './pages/vehiculo/agregar-vehiculo/agregar-vehiculo.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { VehiculoComponent } from './pages/vehiculo/vehiculo.component';
     EditarComponent,
     DepartamentoComponent,
     CiudadComponent,
-    VehiculoComponent
+    VehiculoComponent,
+    AgregarVehiculoComponent
   ],
   imports: [
     BrowserModule,
