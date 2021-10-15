@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Vehiculo } from '../_model/Vehiculo';
 
 
@@ -19,5 +19,10 @@ export class VehiculoService {
   public listarVehiculo(page: number, size: number) {
     return this.http.get<any>(`${this.url}/pageable?page=${page}&size=${size}`);
   }
-
+  public listar(id:number) {
+    return this.http.get(`${this.url}/listar/`+ id);
+  }
+  public editar(vehiculo: Vehiculo){
+    return this.http.put(`${this.url}/editar`, vehiculo);
+  }
 }

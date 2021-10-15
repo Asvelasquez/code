@@ -16,39 +16,17 @@ export class VehiculoComponent implements  OnInit {
   dataSource = new MatTableDataSource<Vehiculo>();
   @ViewChild(MatSort) sort: MatSort;
   constructor(private vehiculoService: VehiculoService ,public route: ActivatedRoute) { }
+  //paginador
   cantidad : number;
   pageIndex : number = 0;
   pageSize: number = 5;
-  selectedValue: string;
-  selectedCar: string;
 
-    
-  
-    
-  //filtro
 
-  ngOnInit(): void {
-    /*
-    let vehiculo: Vehiculo = new Vehiculo();
-    vehiculo.placa = "abc-789";
-    vehiculo.modelo = "2021";
-    vehiculo.marca = "Renault";
-    vehiculo.tipoVehiuclo = "Carga";
-    vehiculo.capacidad = "120Kg"; 
-    */
-  /*
-    this.vehiculoService.listarVehiculo(this.pageIndex,this.pageSize).subscribe(data =>{
-     this.dataSource = new MatTableDataSource(data);
-     console.log(data);
-     
-    //this.vehiculoService.guardar(vehiculo).subscribe(data =>{
-       // console.log("Se registro vehiculo");
-    });
-    */
-      
+  ngOnInit(): void {  
     this.listarPaginado();
     this.applyFilter;
   }
+  
   listarPaginado(){
     this.vehiculoService.listarVehiculo(this.pageIndex, this.pageSize).subscribe(data => {
       this.dataSource = new MatTableDataSource(data.content);
