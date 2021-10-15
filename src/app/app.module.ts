@@ -15,6 +15,7 @@ import { DepartamentoComponent } from './pages/departamento/departamento.compone
 import { CiudadComponent } from './pages/departamento/ciudad/ciudad.component';
 import { VehiculoComponent } from './pages/vehiculo/vehiculo.component';
 import { AgregarVehiculoComponent } from './pages/vehiculo/agregar-vehiculo/agregar-vehiculo.component';
+import { EditarVehiculoComponent } from './pages/vehiculo/editar-vehiculo/editar-vehiculo.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AgregarVehiculoComponent } from './pages/vehiculo/agregar-vehiculo/agre
     DepartamentoComponent,
     CiudadComponent,
     VehiculoComponent,
-    AgregarVehiculoComponent
+    AgregarVehiculoComponent,
+    EditarVehiculoComponent
   ],
   imports: [
     BrowserModule,

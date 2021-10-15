@@ -19,13 +19,9 @@ export class VehiculoComponent implements  OnInit {
   cantidad : number;
   pageIndex : number = 0;
   pageSize: number = 5;
- 
-  animalControl = new FormControl('', Validators.required);
-  selectFormControl = new FormControl('', Validators.required);
-  animals : Vehiculo[] = [
-   
-  ];
- 
+  selectedValue: string;
+  selectedCar: string;
+
     
   
     

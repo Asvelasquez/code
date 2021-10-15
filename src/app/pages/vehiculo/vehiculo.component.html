@@ -1,4 +1,4 @@
-<div class="container" [hidden]="route.children.length !== 0"></div>
+<div [hidden]="route.children.length !== 0"></div>
 <!--filtro busqueda-->
 
 <mat-form-field>
@@ -36,7 +36,7 @@
      <ng-container matColumnDef="editar">
       <th mat-header-cell *matHeaderCellDef> editar </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button color="black"[routerLink]="['/agregarvehiculo',element.idVehiculo]"+borrar>
+        <button mat-button color="black"[routerLink]="['/vehiculo/editarvehiculo/',element.idVehiculo]">
           <mat-icon>edit</mat-icon>
         </button>
       </td>
@@ -58,4 +58,4 @@
       <mat-icon>add_task</mat-icon>
   </button>
 
-      <router-outlet></router-outlet>
+<router-outlet></router-outlet>
