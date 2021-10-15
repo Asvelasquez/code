@@ -18,7 +18,7 @@ vehiculo: any;
 
   constructor(private VehService: VehiculoService, private formBuilder: FormBuilder, 
               public errorInterceptor: ErrorInterceptorService, private router: Router, 
-              private route: ActivatedRoute) {
+              public route: ActivatedRoute) {
       this.buildForm();
     }
     private buildForm(): void{
