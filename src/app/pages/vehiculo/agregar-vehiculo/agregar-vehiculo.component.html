@@ -5,15 +5,18 @@
    
     <mat-label>Ingresar un nuevo vehiculo</mat-label> 
     <p></p>
-    <mat-form-field  hintLabel="Max 6 characters" appearance="fill">
+    
+     
+    
+    <mat-form-field  hintLabel="Max 6 characters" appearance="fill" >
         <mat-label>Ingresar placa</mat-label>
         <input matInput #input maxlength="6" placeholder="" >
         <mat-hint align="end">{{input.value?.length || 0}}/6</mat-hint>
       </mat-form-field>&nbsp;&nbsp;
       
-      <mat-form-field hintLabel="Max 4 characters" appearance="fill">
+      <mat-form-field  hintLabel="Max 4 characters" appearance="fill">
         <mat-label>Ingresar Modelo</mat-label>
-        <input matInput #input maxlength="4" placeholder="">
+        <input name="modelo" matInput #input maxlength="4" placeholder="" ngModel>
         <mat-hint align="end">{{input.value?.length || 0}}/4</mat-hint>
       </mat-form-field>&nbsp;&nbsp;
 
@@ -33,6 +36,8 @@
         <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint> 
       </mat-form-field>&nbsp;&nbsp;
       <button mat-raised-button color="primary">Editar</button>
+
+    
       <!--
       <mat-form-field appearance="fill">
         <mat-label>seleccione Marca</mat-label>
