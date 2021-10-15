@@ -10,36 +10,46 @@ import { FormGroup, ReactiveFormsModule, FormBuilder, FormControl, Validator, Va
   styleUrls: ['./agregar-vehiculo.component.css']
 })
 export class AgregarVehiculoComponent implements OnInit {
-  form!: FormGroup;
-
-  vehicle: Vehiculo = new Vehiculo();
-selectedTipo !: string;
-selectedMarca !: string;
-  veh: any;
+form: FormGroup;
+vehi: Vehiculo = new Vehiculo();
+Tipo : string;
+Marca : string;
+vehiculo: any;
 
   constructor(private VehService: VehiculoService, private formBuilder: FormBuilder, 
               public errorInterceptor: ErrorInterceptorService, private router: Router, 
               private route: ActivatedRoute) {
       this.buildForm();
     }
-
+    private buildForm(): void{
+      this.form = this.formBuilder.group(
+        {
+          idVehiculo: ['', []],
+          placa: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
+          marca: ['', [Validators.required]],
+          modelo: ['', [Validators.required, Validators.min(1980), Validators.max(2021)]],
+          tipoVehiculo: ['', [Validators.required]],
+          capacidad: ['', [Validators.required]],
+        });
+  
+    }
   ngOnInit(): void {
   }
 
   nuevoVehiculo(event: Event): void{
     event.preventDefault();
 
-    const v: Vehiculo = new Vehiculo();
+    const vehiculo: Vehiculo = new Vehiculo();
 
-    v.placa = this.form.value.placa;
-    v.marca = this.form.value.marca;
-    v.modelo = this.form.value.modelo;
-    v.tipoVehiuclo = this.form.value.tipoVehiculo;
-    v.capacidad = this.form.value.capacidad;
+    vehiculo.placa = this.form.value.placa;
+    vehiculo.marca = this.form.value.marca;
+    vehiculo.modelo = this.form.value.modelo;
+    vehiculo.tipoVehiuclo = this.form.value.tipoVehiculo;
+    vehiculo.capacidad = this.form.value.capacidad;
 
     if (this.form.valid)
     {
-      this.VehService.guardar(v).subscribe(success => {
+      this.VehService.guardar(vehiculo).subscribe(success => {
         console.log(success);
         this.form.reset();
         this.router.navigate(['/vehiculo']);
@@ -51,17 +61,6 @@ selectedMarca !: string;
     }
   }
 
-  private buildForm(): void{
-    this.form = this.formBuilder.group(
-      {
-        idVehiculo: ['', []],
-        placa: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]],
-        marca: ['', [Validators.required]],
-        modelo: ['', [Validators.required, Validators.min(1980), Validators.max(2022)]],
-        tipoVehiculo: ['', [Validators.required]],
-        capacidad: ['', [Validators.required]],
-      });
-
-  }
+  
   
 }

@@ -23,9 +23,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
       if (event instanceof HttpResponse) {
         if (event.body && event.body.error === true && event.body.errorMessage) {
           throw new Error(event.body.errorMessage);
-        }/*else{
-            this.snackBar.open("EXITO", 'AVISO', { duration: 5000 });    
-        }*/
+        }
       }
     })).pipe(catchError((err) => {
           this.barraProgreso.progressBarReactiva.next(true);
