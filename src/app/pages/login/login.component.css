@@ -1,0 +1,20 @@
+.username {
+    top: 200px;    
+    left: 450px;
+    min-width: 400px;
+    max-width: 600px;
+  }
+  .pasword{
+    top: 210px;    
+    left: 450px;
+    min-width: 400px;
+    max-width: 600px;
+  }
+  .btn_iniciar{
+    top: 220px;    
+    left: 450px;
+    min-width: 400px;
+    max-width: 600px;
+  }
+
+
