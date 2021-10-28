@@ -11,6 +11,8 @@ import {EditarVehiculoComponent} from './pages/vehiculo/editar-vehiculo/editar-v
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
+
+import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   {path: '',component:BuscarComponent},
   {path: 'buscar', component: BuscarComponent},
@@ -28,6 +30,7 @@ const routes: Routes = [
   },
   {path: 'error',component:NotOkComponent},
   {path: 'nopermiso',component:NotAllowedComponent},
+  {path: 'login',component:LoginComponent},
   {path: '**', component: NotFoundComponent}
 ];
 
