@@ -19,7 +19,13 @@ import { ErrorInterceptorService } from './_share/error-interceptor.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
+import { environment } from 'src/environments/environment';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  let tk = sessionStorage.getItem(environment.TOKEN);
+  return tk != null ? tk : '';
+}
 
 @NgModule({
   declarations: [
@@ -44,7 +50,14 @@ import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
     MaterialModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: [environment.IP],
+        disallowedRoutes: [environment.HOST+'/oauth/token'],
+      },
+    }),
   ],
   providers: [
     {

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProgressBarService } from 'src/app/_service/progress-bar.service';
 import {LoginService}from 'src/app/_service/login.service'
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,8 +16,9 @@ export class LoginComponent implements OnInit {
 
    ngOnInit() {
     this.progressBarService.progressBarReactiva.next(false);
-   this.loginService.login('admin','123456').subscribe(data =>{
+    this.loginService.login('admin','123456').subscribe(data =>{
      console.log(data);
+     sessionStorage.setItem(environment.TOKEN, data.access_token);
    })
 
 
