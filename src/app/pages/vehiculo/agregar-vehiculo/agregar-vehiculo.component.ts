@@ -4,6 +4,7 @@ import { VehiculoService } from 'src/app/_service/vehiculo.service';
 import { ErrorInterceptorService } from 'src/app/_share/error-interceptor.service';
 import { ActivatedRoute,Params,Router } from '@angular/router';
 import { FormGroup, ReactiveFormsModule, FormBuilder, FormControl, Validator, Validators } from '@angular/forms';
+import { ProgressBarService } from 'src/app/_service/progress-bar.service';
 @Component({
   selector: 'app-agregar-vehiculo',
   templateUrl: './agregar-vehiculo.component.html',
@@ -16,9 +17,12 @@ Tipo : string;
 Marca : string;
 vehiculo: any;
 
-  constructor(private VehService: VehiculoService, private formBuilder: FormBuilder, 
-              public errorInterceptor: ErrorInterceptorService, private router: Router, 
-              public route: ActivatedRoute) {
+  constructor(private VehService: VehiculoService, 
+              private formBuilder: FormBuilder, 
+              public errorInterceptor: ErrorInterceptorService, 
+              private router: Router, 
+              public route: ActivatedRoute,
+              private progressBarService: ProgressBarService) {
       this.buildForm();
     }
     private buildForm(): void{
@@ -33,7 +37,10 @@ vehiculo: any;
         });
   
     }
-  ngOnInit(): void {
+   ngOnInit() {
+    this.progressBarService.progressBarReactiva.next(false);
+   
+    this.progressBarService.progressBarReactiva.next(true);
   }
 
   nuevoVehiculo(event: Event): void{

@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Ciudad } from 'src/app/_model/Ciudad';
 import { DepartamentoService } from 'src/app/_service/departamento.service';
+import { ProgressBarService } from 'src/app/_service/progress-bar.service';
 
 @Component({
   selector: 'app-ciudad',
@@ -19,16 +20,19 @@ export class CiudadComponent implements OnInit {
 
   constructor(private departamentoService: DepartamentoService,
               private router: Router,
-              public route: ActivatedRoute) { }
+              public route: ActivatedRoute,
+              private progressBarService: ProgressBarService) { }
 
-  ngOnInit(): void {
-
+   ngOnInit() {
+    this.progressBarService.progressBarReactiva.next(false);
+  
     this.route.params.subscribe((params: Params) =>{
         let idDepartamento = params['idDep'];
 
         this.departamentoService.listarCiudadPorDepartamento(idDepartamento).subscribe(data =>{
           this.dataSourceCiudad = new MatTableDataSource(data);
           this.dataSourceCiudad.paginator = this.citiyPaginator;
+          this.progressBarService.progressBarReactiva.next(true);
         });
 
     });

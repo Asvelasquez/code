@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Vehiculo } from 'src/app/_model/Vehiculo';
 import { VehiculoService } from 'src/app/_service/vehiculo.service';
 import {FormControl, Validators} from '@angular/forms';
+import { ProgressBarService } from 'src/app/_service/progress-bar.service';
 @Component({
   selector: 'app-vehiculo',
   templateUrl: './vehiculo.component.html',
@@ -15,16 +16,21 @@ export class VehiculoComponent implements  OnInit {
   displayedColumns: string[] = ['placa', 'modelo','marca','tipoVehiuclo','capacidad','editar'];
   dataSource = new MatTableDataSource<Vehiculo>();
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private vehiculoService: VehiculoService ,public route: ActivatedRoute) { }
+  constructor(private vehiculoService: VehiculoService ,
+              public route: ActivatedRoute,
+              private progressBarService: ProgressBarService) { }
   //paginador
   cantidad : number;
   pageIndex : number = 0;
   pageSize: number = 5;
 
 
-  ngOnInit(): void {  
+  ngOnInit() {  
+    this.progressBarService.progressBarReactiva.next(false);
+   
     this.listarPaginado();
     this.applyFilter;
+    this.progressBarService.progressBarReactiva.next(true);
   }
   
   listarPaginado(){

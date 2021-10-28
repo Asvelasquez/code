@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProgressBarService } from 'src/app/_service/progress-bar.service';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,16 @@ export class LoginComponent implements OnInit {
   @Input()
   resultadoHija: number;
 
-  constructor() { }
+  constructor(private progressBarService: ProgressBarService) { }
 
-  ngOnInit(): void {
+   ngOnInit() {
+    this.progressBarService.progressBarReactiva.next(false);
+   
+
+
+
+
+    this.progressBarService.progressBarReactiva.next(true);
   }
 
 }

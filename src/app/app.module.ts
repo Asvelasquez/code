@@ -16,6 +16,9 @@ import { VehiculoComponent } from './pages/vehiculo/vehiculo.component';
 import { AgregarVehiculoComponent } from './pages/vehiculo/agregar-vehiculo/agregar-vehiculo.component';
 import { EditarVehiculoComponent } from './pages/vehiculo/editar-vehiculo/editar-vehiculo.component';
 import { ErrorInterceptorService } from './_share/error-interceptor.service';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NotOkComponent } from './pages/not-ok/not-ok.component';
+import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { ErrorInterceptorService } from './_share/error-interceptor.service';
     CiudadComponent,
     VehiculoComponent,
     AgregarVehiculoComponent,
-    EditarVehiculoComponent
+    EditarVehiculoComponent,
+    NotFoundComponent,
+    NotOkComponent,
+    NotAllowedComponent
   ],
   imports: [
     BrowserModule,

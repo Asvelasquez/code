@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Vehiculo } from 'src/app/_model/Vehiculo';
+import { ProgressBarService } from 'src/app/_service/progress-bar.service';
 import { VehiculoService } from 'src/app/_service/vehiculo.service';
 import { ErrorInterceptorService } from 'src/app/_share/error-interceptor.service';
 
@@ -19,9 +20,12 @@ export class EditarVehiculoComponent implements OnInit {
   vehicle: Vehiculo = new Vehiculo();
 
   vehiculo: any;
-  constructor(private VehService: VehiculoService, private formBuilder: FormBuilder, 
-    public errorInterceptor: ErrorInterceptorService, private router: Router, 
-    private route: ActivatedRoute) {this.buildForm(); }
+  constructor(private VehService: VehiculoService, 
+    private formBuilder: FormBuilder, 
+    public errorInterceptor: ErrorInterceptorService, 
+    private router: Router, 
+    private route: ActivatedRoute,
+    private progressBarService: ProgressBarService) {this.buildForm(); }
 
     private buildForm(): void{
       this.form = this.formBuilder.group(
@@ -35,10 +39,13 @@ export class EditarVehiculoComponent implements OnInit {
         });
     
     }
-  ngOnInit(): void {
+  ngOnInit() {
+    this.progressBarService.progressBarReactiva.next(false);
+   
     this.route.params.subscribe((params: Params) => {
       let idVehiculo = params.idVehiculo;
       this.cargarVehiculo(idVehiculo);
+      this.progressBarService.progressBarReactiva.next(true);
     
   });
 }

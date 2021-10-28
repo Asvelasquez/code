@@ -27,7 +27,11 @@
   
       
   </mat-toolbar>
-  
+  <div [hidden]="flagProgressBar"> 
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+
+  </div>
+ 
   <mat-drawer-container class="example-sidenav-content" autosize>
     <mat-drawer #drawer style="width: 200px" mode="side">
 

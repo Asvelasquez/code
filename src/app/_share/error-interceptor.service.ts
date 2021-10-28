@@ -14,7 +14,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
   
   constructor(private snackBar: MatSnackBar,
               private router: Router,
-              private barraProgreso : ProgressBarService) { }
+              private progressBarService: ProgressBarService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
@@ -26,11 +26,12 @@ export class ErrorInterceptorService implements HttpInterceptor {
         }
       }
     })).pipe(catchError((err) => {
-          this.barraProgreso.progressBarReactiva.next(true);
+        this.progressBarService.progressBarReactiva.next(true);
           console.log(err);
           if(err.error.status == 400) {
                 this.openSnackBar(err.error.message);
-               
+          } else if(err.status == 401) {
+            this.router.navigate(['/nopermiso']);
           } else if(err.error.status == 404) {
                 this.openSnackBar(err.error.message);
                 
@@ -42,10 +43,11 @@ export class ErrorInterceptorService implements HttpInterceptor {
                 this.openSnackBar(err.error.message);
                 
           } else  if(err.error.status == 500) {
-                this.router.navigate(['error']);
+                this.router.navigate(['/error']);
               
           }
-          
+         
+          console.log("entro al interceptor");
           return EMPTY;
     }));
 
