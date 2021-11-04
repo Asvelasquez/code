@@ -28,8 +28,12 @@ export class ErrorInterceptorService implements HttpInterceptor {
     })).pipe(catchError((err) => {
         this.progressBarService.progressBarReactiva.next(true);
           console.log(err);
-          if(err.error.status == 400) {
-                this.openSnackBar(err.error.message);
+          if (err.status === 400 && err.error.error_description === "Bad credentials"){
+            this.openSnackBar('username o contraseña incorrectos');
+          }else if (err.status === 401 && err.error.error_description === "----Nick o password incorecto"){
+            this.openSnackBar('username o contraseña incorrecta');
+          }else if (err.error.status === 400 && err.error.message === "----Placa ya se encuentra registrada.") {
+            this.openSnackBar('Placa ya se encuentra registrada');
           } else if(err.status == 401) {
             this.router.navigate(['/nopermiso']);
           } else if(err.error.status == 404) {
@@ -54,7 +58,7 @@ export class ErrorInterceptorService implements HttpInterceptor {
   }
 
   private openSnackBar(mensaje: string) {
-    this.snackBar.open(mensaje, 'Información', {
+    this.snackBar.open(mensaje, '', {
       duration: 2000,
       horizontalPosition: 'center',
       verticalPosition: 'top',

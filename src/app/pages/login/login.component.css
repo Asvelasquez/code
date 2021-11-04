@@ -1,20 +1,23 @@
-.username {
-    top: 200px;    
-    left: 450px;
-    min-width: 400px;
-    max-width: 600px;
-  }
-  .pasword{
-    top: 210px;    
-    left: 450px;
-    min-width: 400px;
-    max-width: 600px;
-  }
-  .btn_iniciar{
-    top: 220px;    
-    left: 450px;
-    min-width: 400px;
-    max-width: 600px;
-  }
 
+:host {
+  height: 100%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  width: 100%;
+}
 

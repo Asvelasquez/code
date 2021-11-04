@@ -1,4 +1,5 @@
 <div class="example-container">
+<div [hidden]="flagToolbar">
   <mat-toolbar color="primary" class="example-toolbar" > 
       
     <button mat-icon-button (click)="drawer.toggle()">
@@ -19,14 +20,13 @@
                 <mat-icon>account_box</mat-icon>
                 <span>Mi Perfil</span>
             </button>
-            <button mat-menu-item >
+            <button mat-menu-item (click)="cerrarSession()">
                 <mat-icon>exit_to_app</mat-icon>
                 <span>Cerrar Sesión</span>
             </button>
         </mat-menu>
-  
-      
   </mat-toolbar>
+</div>
   <div [hidden]="flagProgressBar"> 
     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
 
@@ -35,7 +35,7 @@
   <mat-drawer-container class="example-sidenav-content" autosize>
     <mat-drawer #drawer style="width: 200px" mode="side">
 
-        <img src="assets/udec_escudo.png" width="128" style="margin-left: 20px;" />
+        <img src="assets/domi.jpg" width="128" style="margin-left: 20px;" />
   
         <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/buscar']">
             <mat-icon>search</mat-icon>
@@ -43,7 +43,7 @@
         </button>
         <mat-divider></mat-divider>  
         
-        <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/ingresar']">
+        <button mat-menu-item [disabled]="flagSesion" (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/login']">
           <mat-icon>manage accounts</mat-icon>
           <span>Ingresar</span>
         </button>

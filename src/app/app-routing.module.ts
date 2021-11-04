@@ -11,22 +11,22 @@ import {EditarVehiculoComponent} from './pages/vehiculo/editar-vehiculo/editar-v
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
-
+import { GuardianService} from './_share/guardian.service';
 import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
-  {path: '',component:BuscarComponent},
+  {path: '',component:DepartamentoComponent},
   {path: 'buscar', component: BuscarComponent},
   {path: 'ingresar', component: RegistroComponent},
   {path: 'editar', component: EditarComponent},
   {path: 'departamento', component: DepartamentoComponent, children :[
-       {path:  'ciudad/:idDep', component: CiudadComponent}
-    ]
+       {path:  'ciudad/:idDep', component: CiudadComponent,canActivate: [GuardianService]}
+    ],canActivate: [GuardianService]
   },
 
   {path: 'vehiculo', component: VehiculoComponent, children:[
-    {path: 'agregarvehiculo',component:AgregarVehiculoComponent},
-    {path: 'editarvehiculo/:idVehiculo',component:EditarVehiculoComponent}
-  ]
+    {path: 'agregarvehiculo',component:AgregarVehiculoComponent,canActivate: [GuardianService]},
+    {path: 'editarvehiculo/:idVehiculo',component:EditarVehiculoComponent,canActivate: [GuardianService]}
+  ],canActivate: [GuardianService]
   },
   {path: 'error',component:NotOkComponent},
   {path: 'nopermiso',component:NotAllowedComponent},
