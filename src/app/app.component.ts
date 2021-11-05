@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import {ProgressBarService} from 'src/app/_service/progress-bar.service';
 import { LoginService } from './_service/login.service';
+import { BnNgIdleService } from 'bn-ng-idle';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
   public flagSesion: boolean = false;
   public flagToolbar: boolean= true;
   
-  constructor(private progressBarService: ProgressBarService, private loginService: LoginService,){
+  constructor(private progressBarService: ProgressBarService, private loginService: LoginService,private bnIdle: BnNgIdleService){
 
   }
   ngOnInit(): void{
@@ -27,6 +28,18 @@ export class AppComponent implements OnInit {
     });
     this.progressBarService.progressBarReactiva.subscribe(data =>{
       this.flagProgressBar = data;
+    });
+
+    this.bnIdle.startWatching(5).subscribe((isTimedOut: boolean) => {
+      if (isTimedOut) {
+        
+    if(this.loginService.estaLogueado()==true){
+      //this.flagToolbar =false;
+       alert("Inicie Sesion nuevamente");
+       this.cerrarSession();
+      console.log("sesion cerrada");
+    }
+      }
     });
   }
   logeo(){

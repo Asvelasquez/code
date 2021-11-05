@@ -21,6 +21,7 @@ import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { environment } from 'src/environments/environment';
 import { JwtModule } from '@auth0/angular-jwt';
+import { BnNgIdleService } from 'bn-ng-idle';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN);
@@ -60,12 +61,16 @@ export function tokenGetter() {
     }),
   ],
   providers: [
+    [BnNgIdleService],
     {
+      
       provide: HTTP_INTERCEPTORS,
       useClass:ErrorInterceptorService,
-      multi:    true
+      multi:    true,
+      
     }
-  ],
+  ], 
+   
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,12 +4,13 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LoginService } from '../_service/login.service';
+import { BnNgIdleService } from 'bn-ng-idle';
 @Injectable({
   providedIn: 'root'
 })
 export class GuardianService implements CanActivate {
 
-  constructor(private loginService:LoginService,private router: Router) { }
+  constructor(private loginService:LoginService,private router: Router,private bnIdle: BnNgIdleService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
     
@@ -44,7 +45,12 @@ export class GuardianService implements CanActivate {
       this.router.navigate(['/nopermiso']);
       return false;
     }
-
+   
+      
     
+   
   }
+
+
+
 }
