@@ -22,6 +22,8 @@ import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { environment } from 'src/environments/environment';
 import { JwtModule } from '@auth0/angular-jwt';
 import { BnNgIdleService } from 'bn-ng-idle';
+import { ConductorComponent } from './pages/conductor/conductor.component';
+import { AgregarConductorComponent } from './pages/conductor/agregar-conductor/agregar-conductor.component';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN);
@@ -42,7 +44,9 @@ export function tokenGetter() {
     EditarVehiculoComponent,
     NotFoundComponent,
     NotOkComponent,
-    NotAllowedComponent
+    NotAllowedComponent,
+    ConductorComponent,
+    AgregarConductorComponent
   ],
   imports: [
     BrowserModule,

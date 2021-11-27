@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
       this.flagProgressBar = data;
     });
 
-    this.bnIdle.startWatching(5).subscribe((isTimedOut: boolean) => {
+    this.bnIdle.startWatching(6000).subscribe((isTimedOut: boolean) => {
       if (isTimedOut) {
         
     if(this.loginService.estaLogueado()==true){

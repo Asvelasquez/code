@@ -23,16 +23,12 @@ export class VehiculoComponent implements  OnInit {
   cantidad : number;
   pageIndex : number = 0;
   pageSize: number = 5;
-
-
   ngOnInit() {  
-    this.progressBarService.progressBarReactiva.next(false);
-   
+    this.progressBarService.progressBarReactiva.next(false);   
     this.listarPaginado();
     this.applyFilter;
     this.progressBarService.progressBarReactiva.next(true);
-  }
-  
+  }  
   listarPaginado(){
     this.vehiculoService.listarVehiculo(this.pageIndex, this.pageSize).subscribe(data => {
       this.dataSource = new MatTableDataSource(data.content);

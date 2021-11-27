@@ -1,0 +1,169 @@
+<div class="example-container">
+    <h2 class="center">Registrar Conductor</h2>
+    <div>
+        <form [formGroup]="form" (ngSubmit)="nuevoVehiculo($event)">
+            <!---->
+            <br> 
+            <mat-form-field appearance="outline">
+                <mat-label>Documento</mat-label>
+                <input #input2 matInput type="text" placeholder="" formControlName="documento" maxlength="11">
+                <mat-hint align="end">{{input2.value?.length || 0}}/11</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('documento')?.errors && form.get('documento')?.touched">
+                <p *ngIf="form.get('documento')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+                <p *ngIf="form.get('documento')?.hasError('min') || form.get('documento')?.hasError('max')">
+                    Modelos entre 1970 y 2022
+                </p>
+            </div>
+             <!---->
+               <!---->
+            &nbsp;&nbsp;&nbsp;&nbsp; 
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input #input2 matInput type="text" placeholder="" formControlName="nombre" maxlength="15">
+                <mat-hint align="end">{{input2.value?.length || 0}}/15</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('nombre')?.errors && form.get('nombre')?.touched">
+                <p *ngIf="form.get('nombre')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+                <p *ngIf="form.get('nombre')?.hasError('min') || form.get('nombre')?.hasError('max')">
+                    Modelos entre 1970 y 2022
+                </p>
+            </div>
+             <!---->
+                 <!---->
+            <br> 
+            <mat-form-field appearance="outline">
+                <mat-label>Apellido</mat-label>
+                <input #input2 matInput type="text" placeholder="" formControlName="apellido" maxlength="15">
+                <mat-hint align="end">{{input2.value?.length || 0}}/15</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('apellido')?.errors && form.get('apellido')?.touched">
+                <p *ngIf="form.get('apellido')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+                <p *ngIf="form.get('apellido')?.hasError('min') || form.get('apellido')?.hasError('max')">
+                    Modelos entre 1970 y 2022
+                </p>
+            </div>
+             <!---->
+             <!---->
+             &nbsp;&nbsp;&nbsp;&nbsp; 
+            <mat-form-field appearance="outline">
+                <mat-label>Nick</mat-label>
+                <input #input2 matInput type="text" placeholder="" formControlName="nick" maxlength="15">
+                <mat-hint align="end">{{input2.value?.length || 0}}/15</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('nick')?.errors && form.get('nick')?.touched">
+                <p *ngIf="form.get('nick')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+                <p *ngIf="form.get('nick')?.hasError('min') || form.get('nick')?.hasError('max')">
+                    Modelos entre 1970 y 2022
+                </p>
+            </div>
+             <!---->
+            <!---->
+            <br> 
+            <mat-form-field appearance="outline">
+                <mat-label>Clave</mat-label>
+                <input #input2 matInput type="text" placeholder="" formControlName="clave" maxlength="15">
+                <mat-hint align="end">{{input2.value?.length || 0}}/15</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('clave')?.errors && form.get('clave')?.touched">
+                <p *ngIf="form.get('clave')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+                <p *ngIf="form.get('clave')?.hasError('min') || form.get('clave')?.hasError('max')">
+                    Modelos entre 1970 y 2022
+                </p>
+            </div>
+             <!---->
+             <!---->
+             &nbsp;&nbsp;&nbsp;&nbsp; 
+            <mat-form-field appearance="outline">
+                <mat-label>Direccion</mat-label>
+                <input #input2 matInput type="text" placeholder="" formControlName="direccion" maxlength="15">
+                <mat-hint align="end">{{input2.value?.length || 0}}/15</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('direccion')?.errors && form.get('direccion')?.touched">
+                <p *ngIf="form.get('direccion')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+                <p *ngIf="form.get('direccion')?.hasError('min') || form.get('direccion')?.hasError('max')">
+                    Modelos entre 1970 y 2022
+                </p>
+            </div>
+             <!---->
+               <!---->
+            <br> 
+            <mat-form-field appearance="outline">
+                <mat-label>Celular</mat-label>
+                <input #input2 matInput type="text" placeholder="" formControlName="celular" maxlength="10">
+                <mat-hint align="end">{{input2.value?.length || 0}}/10</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('celular')?.errors && form.get('celular')?.touched">
+                <p *ngIf="form.get('celular')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+                <p *ngIf="form.get('celular')?.hasError('min') || form.get('celular')?.hasError('max')">
+                    Modelos entre 1970 y 2022
+                </p>
+            </div>
+             <!---->
+             <!---->
+             &nbsp;&nbsp;&nbsp;&nbsp;  
+            <mat-form-field appearance="outline">
+                <mat-label>CelularAux</mat-label>
+                <input #input2 matInput type="text" placeholder="" formControlName="celularaux" maxlength="10">
+                <mat-hint align="end">{{input2.value?.length || 0}}/10</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('celularaux')?.errors && form.get('celularaux')?.touched">
+                <p *ngIf="form.get('celularaux')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+                <p *ngIf="form.get('celularaux')?.hasError('min') || form.get('celularaux')?.hasError('max')">
+                    Modelos entre 1970 y 2022
+                </p>
+            </div>
+             <!---->
+              <!---->
+            <br> 
+            <mat-form-field appearance="outline">
+                <mat-label>Correo</mat-label>
+                <input #input2 matInput type="text" placeholder="" formControlName="correo" maxlength="10">
+                <mat-hint align="end">{{input2.value?.length || 0}}/10</mat-hint>
+            </mat-form-field>
+            <div *ngIf="form.get('correo')?.errors && form.get('correo')?.touched">
+                <p *ngIf="form.get('correo')?.hasError('required')">
+                    Es un campo requerido
+                </p>
+                <p *ngIf="form.get('correo')?.hasError('min') || form.get('correo')?.hasError('max')">
+                    Modelos entre 1970 y 2022
+                </p>
+            </div>
+             <!---->
+            
+             <!---->
+            
+            <!---->
+           
+             <!---->
+           
+            
+    
+            <div >
+              <button type="submit" mat-raised-button color="black" style="width: 150px;" [routerLink]="['/vehiculo/agregarvehiculo']" >
+                  <mat-icon>save</mat-icon><span>Agregar</span>
+              </button>
+            </div>
+            </form>
+            </div>
+            <button mat-fab color="black" style="float: left; left: 150px;" [routerLink]="['/conductor']">
+                <mat-icon>arrow_back</mat-icon>
+              </button>
+    
+    </div>

@@ -13,6 +13,8 @@ import { NotOkComponent } from './pages/not-ok/not-ok.component';
 import { NotAllowedComponent } from './pages/not-allowed/not-allowed.component';
 import { GuardianService} from './_share/guardian.service';
 import { LoginComponent } from './pages/login/login.component';
+import { ConductorComponent } from './pages/conductor/conductor.component';
+import { AgregarConductorComponent } from './pages/conductor/agregar-conductor/agregar-conductor.component';
 const routes: Routes = [
   {path: '',component:DepartamentoComponent},
   {path: 'buscar', component: BuscarComponent},
@@ -26,6 +28,12 @@ const routes: Routes = [
   {path: 'vehiculo', component: VehiculoComponent, children:[
     {path: 'agregarvehiculo',component:AgregarVehiculoComponent,canActivate: [GuardianService]},
     {path: 'editarvehiculo/:idVehiculo',component:EditarVehiculoComponent,canActivate: [GuardianService]}
+  ],canActivate: [GuardianService]
+  },
+  
+  {path: 'conductor',component:ConductorComponent, children:[
+    {path: 'agregarconductor',component:AgregarConductorComponent,canActivate: [GuardianService]},
+    
   ],canActivate: [GuardianService]
   },
   {path: 'error',component:NotOkComponent},

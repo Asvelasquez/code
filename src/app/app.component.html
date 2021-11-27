@@ -65,6 +65,11 @@
           <mat-icon>commute</mat-icon>
           <span>Vehiculo</span>
         </button>
+
+        <button mat-menu-item (click)="drawer.toggle()" style="cursor: pointer" [routerLink]="['/conductor']">
+          <mat-icon>commute</mat-icon>
+          <span>Conductor</span>
+        </button>
         <mat-divider></mat-divider>          
       
     </mat-drawer>
